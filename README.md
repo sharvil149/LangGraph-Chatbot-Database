@@ -1,4 +1,17 @@
-# LangGraph Chatbot with Groq and Database Integration
+# LangGraph Multi-Thread AI Chatbot
+
+🌐 **Live Application:**  
+https://langgraph-chatbot-database-c4hvjemym5apzcmtlrenzm.streamlit.app
+
+This project implements a stateful conversational AI system using LangGraph with SQLite checkpointing for thread management. It integrates Groq’s LLaMA 3.1 model for inference and is deployed on Streamlit Cloud.
+
+## Key Features
+
+- Multi-thread conversation support
+- Streaming LLM responses
+- LangGraph state machine architecture
+- SQLite-based checkpointing
+- Cloud deployment
 
 This project implements a Streamlit-based conversational AI chatbot powered by LangGraph and Groq LLMs.  
 It supports persistent conversation storage using a database backend and structured workflow-based message handling.
