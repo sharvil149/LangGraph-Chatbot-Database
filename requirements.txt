@@ -1,5 +1,5 @@
 streamlit
-langgraph
+langgraph>=0.0.40
 langchain
 langchain-groq
 groq
