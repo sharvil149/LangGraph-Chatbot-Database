@@ -6,6 +6,7 @@ from langchain_groq import ChatGroq
 from langchain_core.messages import BaseMessage,HumanMessage
 from langgraph.checkpoint.sqlite import SqliteSaver
 import sqlite3
+import os
 
 load_dotenv()
 
@@ -31,7 +32,12 @@ def chat_node(state: ChatState):
 
 
 conn = sqlite3.connect(database='chatbot.db',check_same_thread = False)
-checkpointer = SqliteSaver.from_conn_string("sqlite:////mount/src/langgraph-chatbot-database/chatbot.db")
+
+db_path = os.path.abspath("chatbot.db")
+
+checkpointer = SqliteSaver.from_conn_string(
+    f"sqlite:///{db_path}"
+)
 graph = StateGraph(ChatState)
 
 graph.add_node("chat_node",chat_node)
