@@ -1,6 +1,4 @@
 streamlit
 langgraph==1.0.8
-langchain==0.3.27
-langchain-core==0.3.72
 langchain-groq
 python-dotenv
