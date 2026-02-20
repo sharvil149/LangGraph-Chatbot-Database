@@ -1,18 +1,19 @@
-# LangGraph Chatbot with Database Integration
+# LangGraph Chatbot with Groq and Database Integration
 
-This project implements a Streamlit-based conversational AI chatbot powered by LangGraph.  
-It supports persistent conversation storage using a database backend and manages chat sessions using structured workflow logic.
+This project implements a Streamlit-based conversational AI chatbot powered by LangGraph and Groq LLMs.  
+It supports persistent conversation storage using a database backend and structured workflow-based message handling.
 
 ## Project Overview
 
 The system combines:
 
 - Streamlit frontend for user interaction
-- LangGraph workflow for structured message handling
-- Database backend for conversation persistence
+- LangGraph for workflow orchestration
+- Groq LLM API for fast inference
+- SQLite database for conversation persistence
 - Thread-based session management
 
-The architecture separates frontend UI logic from backend workflow and storage logic to maintain modularity.
+The architecture separates frontend UI logic from backend workflow and storage logic to maintain modularity and scalability.
 
 ## Architecture
 
@@ -26,15 +27,26 @@ Backend Components:
 - langgraph_database_backend.py
 
 The frontend collects user input and displays responses.  
-The backend processes messages using a LangGraph workflow and stores conversation history in a database.
+The backend processes messages using a LangGraph workflow, sends prompts to Groq LLM, and stores conversation history in the database.
 
 ## Features
 
-- Interactive chatbot interface
-- Workflow-driven message processing
+- Interactive chatbot interface built with Streamlit
+- Workflow-driven message processing using LangGraph
+- Integration with Groq LLM API
 - Persistent chat history using SQLite
 - Thread-based session handling
-- Modular backend structure
+- Modular backend design
+
+## Technologies Used
+
+- Python
+- Streamlit
+- LangGraph
+- LangChain
+- Groq API
+- SQLite
+- python-dotenv
 
 ## Installation
 
@@ -59,6 +71,18 @@ Install dependencies:
 pip install -r requirements.txt
 ```
 
+## Environment Setup
+
+Create a `.env` file in the project root directory and add your Groq API key:
+
+```
+GROQ_API_KEY=your_api_key_here
+```
+
+Make sure `.env` is listed in `.gitignore` to avoid exposing secrets.
+
+The application loads the API key using `python-dotenv`.
+
 ## Running the Application
 
 Start the Streamlit application:
@@ -69,19 +93,29 @@ streamlit run streamlit_frontend_database.py
 
 The chatbot will open in your browser.
 
+## How It Works
+
+1. User submits a message through the Streamlit interface.
+2. The message is passed to the LangGraph workflow.
+3. The workflow processes the input and calls the Groq LLM.
+4. The response is generated and stored in the SQLite database.
+5. Conversation history is retrieved and displayed in the UI.
+
 ## Learning Outcomes
 
 This project demonstrates:
 
 - Workflow orchestration using LangGraph
-- Separation of frontend and backend logic
+- Integration of Groq LLM API
 - Persistent conversation storage
-- Session state management
+- Separation of frontend and backend logic
+- Stateful session management
 - Structured AI application development
 
 ## Future Improvements
 
-- User authentication system
+- User authentication
 - Cloud deployment
 - UI enhancements
-- Multi-user support
+- Multi-user database support
+- Conversation export functionality
