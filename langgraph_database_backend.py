@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 from pydantic import BaseModel
 from langchain_groq import ChatGroq
 from langchain_core.messages import BaseMessage,HumanMessage
-from langgraph.checkpoint.sqlite import SqliteSaver
+from langgraph.checkpoint import SqliteSaver
 import sqlite3
 
 load_dotenv()
