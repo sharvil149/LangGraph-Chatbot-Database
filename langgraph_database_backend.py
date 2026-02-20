@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 from pydantic import BaseModel
 from langchain_groq import ChatGroq
 from langchain_core.messages import BaseMessage,HumanMessage
-from langgraph.checkpoint.memory import MemorySaver
+from langgraph.checkpoint.sqlite import SqliteSaver
 import sqlite3
 
 load_dotenv()
@@ -31,7 +31,7 @@ def chat_node(state: ChatState):
 
 
 conn = sqlite3.connect(database='chatbot.db',check_same_thread = False)
-checkpointer = MemorySaver()
+checkpointer = SqliteSaver()
 graph = StateGraph(ChatState)
 
 graph.add_node("chat_node",chat_node)
